@@ -1,5 +1,5 @@
 # Software-Engineering
-Repository where Web Application Project will be made
+Repository where Software-Engineering Project will be made
 
 Link where you can find the document with task and estimations : https://docs.google.com/spreadsheets/d/1OGxvs-ckMHdYxJeVqtGKNSAUa5swZHBclA8ytprd53Y/edit?usp=sharing
 

@@ -12536,27 +12536,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\radud\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\": {},
+    "C:\\Users\\Iulian Ionescu\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\radud\\OneDrive\\Documents\\GitHub\\Software-Engineering\\Software-Engineering\\LabScheduleApp\\LabScheduleApp\\LabScheduleApp.csproj",
+      "projectUniqueName": "E:\\GitHub\\Software-Engineering\\LabScheduleApp\\LabScheduleApp\\LabScheduleApp.csproj",
       "projectName": "LabScheduleApp",
-      "projectPath": "C:\\Users\\radud\\OneDrive\\Documents\\GitHub\\Software-Engineering\\Software-Engineering\\LabScheduleApp\\LabScheduleApp\\LabScheduleApp.csproj",
-      "packagesPath": "C:\\Users\\radud\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\radud\\OneDrive\\Documents\\GitHub\\Software-Engineering\\Software-Engineering\\LabScheduleApp\\LabScheduleApp\\obj\\",
+      "projectPath": "E:\\GitHub\\Software-Engineering\\LabScheduleApp\\LabScheduleApp\\LabScheduleApp.csproj",
+      "packagesPath": "C:\\Users\\Iulian Ionescu\\.nuget\\packages\\",
+      "outputPath": "E:\\GitHub\\Software-Engineering\\LabScheduleApp\\LabScheduleApp\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\",
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\radud\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.Fallback.config"
+        "C:\\Users\\Iulian Ionescu\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.0"

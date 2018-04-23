@@ -14,12 +14,9 @@
         <th>
             @Html.DisplayNameFor(model => model.UserName)
         </th>
-        @*Add a table header for the Address info:*@
-        <th>
-            @Html.DisplayNameFor(model => model.DisplayAddress)
-        </th>
-        <th>
 
+        <th>
+            <p>Options</p>
         </th>
     </tr>
 
@@ -28,10 +25,6 @@
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.UserName)
-        </td>
-        <td>
-            @*Add table data for the Address info:*@
-            @Html.DisplayFor(modelItem => item.DisplayAddress)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |

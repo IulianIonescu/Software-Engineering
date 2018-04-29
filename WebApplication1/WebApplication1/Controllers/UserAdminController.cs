@@ -173,6 +173,10 @@ namespace IdentitySample.Controllers
 
                 user.UserName = editUser.Email;
                 user.Email = editUser.Email;
+<<<<<<< HEAD
+=======
+                user.Username = editUser.Username;
+>>>>>>> 7e9800c97e2d96226b21c7ca6c779d6153081392
 
                 var userRoles = await UserManager.GetRolesAsync(user.Id);
 

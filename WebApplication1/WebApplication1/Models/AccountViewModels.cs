@@ -78,6 +78,7 @@ namespace IdentitySample.Models
         [System.ComponentModel.DataAnnotations.Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
 
+<<<<<<< HEAD
         [Required]
         [Display(Name = "Select Laboratories")]
         public Laboratories_enum Laboratories { get; set; }
@@ -89,6 +90,8 @@ namespace IdentitySample.Models
         Micro,
         SA,
         PDA
+=======
+>>>>>>> 7e9800c97e2d96226b21c7ca6c779d6153081392
     }
 
     public class ResetPasswordViewModel

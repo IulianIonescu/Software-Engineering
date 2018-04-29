@@ -151,12 +151,7 @@ namespace IdentitySample.Controllers
             {
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
 
-<<<<<<< HEAD
               
-=======
-                // Add the Username properties:
-                user.Username = model.Username;
->>>>>>> 7e9800c97e2d96226b21c7ca6c779d6153081392
 
 
                 var result = await UserManager.CreateAsync(user, model.Password);

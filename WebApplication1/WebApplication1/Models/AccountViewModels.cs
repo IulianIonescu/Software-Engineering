@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Web.Mvc;
 
 namespace IdentitySample.Models
 {
@@ -74,17 +75,20 @@ namespace IdentitySample.Models
 
         [DataType(DataType.Password)]
         [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [System.ComponentModel.DataAnnotations.Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
 
-        // Add the new address properties:
-        public string Address { get; set; }
-        public string City { get; set; }
-        public string State { get; set; }
+        [Required]
+        [Display(Name = "Select Laboratories")]
+        public Laboratories_enum Laboratories { get; set; }
 
-        // Use a sensible display name for views:
-        [Display(Name = "Postal Code")]
-        public string PostalCode { get; set; }
+    }
+
+    public enum Laboratories_enum
+    {
+        Micro,
+        SA,
+        PDA
     }
 
     public class ResetPasswordViewModel
@@ -102,7 +106,7 @@ namespace IdentitySample.Models
 
         [DataType(DataType.Password)]
         [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [System.ComponentModel.DataAnnotations.Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
 
         public string Code { get; set; }

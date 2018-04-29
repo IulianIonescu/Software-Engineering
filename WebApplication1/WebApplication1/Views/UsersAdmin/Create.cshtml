@@ -1,4 +1,8 @@
-﻿@model IdentitySample.Models.RegisterViewModel
+﻿
+
+@using IdentitySample.Models
+@model IdentitySample.Models.RegisterViewModel
+
 @{
     ViewBag.Title = "Create";
 }
@@ -19,31 +23,6 @@
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(m => m.Address, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Address, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.City, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.City, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.State, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.State, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.PostalCode, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.PostalCode, new { @class = "form-control" })
-        </div>
-    </div>
-
-    <div class="form-group">
         @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
             @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
@@ -55,25 +34,35 @@
             @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
         </div>
     </div>
+
     <div class="form-group">
-        <label class="col-md-2 control-label">
-            Select User Role
-        </label>
+        @Html.LabelFor(m => m.Laboratories, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @foreach (var item in (SelectList)ViewBag.RoleId)
+            @Html.DropDownListFor(m => m.Laboratories,
+                                new SelectList(Enum.GetValues(typeof(Laboratories_enum))),
+                                "Select Laboratories")
+         </div>
+    </div>
+
+        <div class="form-group">
+            <label class="col-md-2 control-label">
+                Select User Role
+            </label>
+            <div class="col-md-10">
+                @foreach (var item in (SelectList)ViewBag.RoleId)
             {
                 <input type="checkbox" name="SelectedRoles" value="@item.Value" class="checkbox-inline" />
                 @Html.Label(item.Value, new { @class = "control-label" })
-            }
+        }
+            </div>
         </div>
-    </div>
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" class="btn btn-default" value="Create" />
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" class="btn btn-default" value="Create" />
+            </div>
         </div>
-    </div>
-}
+        }
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+        @section Scripts {
+            @Scripts.Render("~/bundles/jqueryval")
+        }

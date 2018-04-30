@@ -38,8 +38,8 @@
         @Html.LabelFor(m => m.Laboratories, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
             @Html.DropDownListFor(m => m.Laboratories,
-                                          new SelectList(Enum.GetValues(typeof(Laboratories_enum))),
-                                          "Select Laboratories")
+                                     new SelectList(Enum.GetValues(typeof(Laboratories_enum))),
+                                     "Select Laboratories")
         </div>
     </div>
 

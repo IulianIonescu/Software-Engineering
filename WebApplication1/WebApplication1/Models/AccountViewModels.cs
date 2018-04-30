@@ -78,6 +78,11 @@ namespace IdentitySample.Models
         [System.ComponentModel.DataAnnotations.Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
 
+    }
+
+    public class AssignTeacherViewModel : RegisterViewModel
+    {
+
         [Required]
         [Display(Name = "Select Laboratories")]
         public Laboratories_enum Laboratories { get; set; }

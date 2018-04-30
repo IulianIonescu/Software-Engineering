@@ -128,6 +128,45 @@ namespace IdentitySample.Controllers
             return View();
         }
 
+        //30.04
+        //
+        // GET: /Users/Create
+  
+
+        //
+        // POST: /Users/AssignTeacher
+        [HttpPost]
+        public async Task<ActionResult> AssignTeacher(AssignTeacherViewModel userViewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = new ApplicationUser
+                {
+                    UserName = userViewModel.Email,
+                    Email = userViewModel.Email,
+
+                };
+
+                var adminresult = await UserManager.CreateAsync(user, userViewModel.Password);
+
+                //Add User to the selected Roles 
+                if (adminresult.Succeeded)
+                {
+                    UserManager.AddToRoles(user.Id, "Teacher");
+                }
+                else
+                {
+                    ModelState.AddModelError("", adminresult.Errors.First());
+                    ViewBag.RoleId = new SelectList(RoleManager.Roles, "Name", "Name");
+                    return View();
+
+                }
+                return RedirectToAction("Index");
+            }
+            ViewBag.RoleId = new SelectList(RoleManager.Roles, "Name", "Name");
+            return View();
+        }
+
         //
         // GET: /Users/Edit/1
         public async Task<ActionResult> Edit(string id)

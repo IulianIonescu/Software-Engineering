@@ -89,11 +89,27 @@ namespace IdentitySample.Models
 
     }
 
+    public class AssignStudentViewModel : RegisterViewModel
+    {
+
+        [Required]
+        [Display(Name = "Assign to Group")]
+        public Groups_enum Groups { get; set; }
+
+    }
+
     public enum Laboratories_enum
     {
         Micro,
         SA,
         PDA
+    }
+
+    public enum Groups_enum
+    {
+        CEN31,
+        CEN32,
+        CEN33
     }
 
     public class ResetPasswordViewModel

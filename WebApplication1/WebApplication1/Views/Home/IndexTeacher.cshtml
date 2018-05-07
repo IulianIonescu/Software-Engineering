@@ -7,8 +7,9 @@
     /* Create two equal columns that floats next to each other */
     .column {
         float: left;
-        width: 50%;
+        width: 10%;
         padding: 10px;
+        font-size : 10px;
     }
 
     /* Clear floats after the columns */
@@ -17,56 +18,86 @@
         display: table;
         clear: both;
     }
+    h2 {
+        font-size: 20px;
+        
+    }
 </style>
 
-<h2>Index</h2>
+<h2>Situation of students</h2>
+<h2>Laboratory : Software Engineering</h2>
 
 <script type="text/javascript" src="~/Scripts/laboratoriesGrid.js"></script>
 
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.UserName)
+            <!--   Html.DisplayNameFor(model => model.UserName) -->
+            <p style="font-size: 15px; text-align:center";>Username</p> 
         </th>
 
         <th>
-            <p>Options</p>
+            <p style="font-size: 15px; "; >Grades</p>
         </th>
     </tr>
 
-    @foreach (var item in Model)
+    @for(int i = 0; i < 5; i++)
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.UserName)
+                <!-- Html.DisplayFor(modelItem => item.UserName) -->
+                <p style="font-size: 20px; text-align:center";> Ionel</p>
             </td>
             <td>
                 <!-- Load Font Awesome Icon Library -->
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
                 <!-- Buttons to choose list or grid view -->
-                <button onclick="listView()"><i class="fa fa-bars"></i> List</button>
-                <button onclick="gridView()"><i class="fa fa-th-large"></i> Grid</button>
+                <!--  <button onclick="listView()"><i class="fa fa-bars"></i> List</button> 
+                <button onclick="gridView()"><i class="fa fa-th-large"></i> Grid</button>-->
 
                 <div class="row">
-                    <div class="column" style="background-color:#aaa;">
-                        <h2>Column 1</h2>
-                        <p>Some text..</p>
+                    <div class="column">
+                        <h2>Lab1</h2>
+                        
                     </div>
-                    <div class="column" style="background-color:#bbb;">
-                        <h2>Column 2</h2>
-                        <p>Some text..</p>
+                    <div class="column" >
+                        <h2>Lab2</h2>
+                        
+                    </div>
+                    <div class="column">
+                        <h2>Lab3</h2>
+                        
+                    </div>
+                    <div class="column">
+                        <h2>Lab4</h2>
+                        
+                    </div>
+                    <div class="column" >
+                        <h2>Lab5</h2>
+                        
                     </div>
                 </div>
 
                 <div class="row">
-                    <div class="column" style="background-color:#ccc;">
-                        <h2>Column 3</h2>
-                        <p>Some text..</p>
+                    <div class="column">
+                        <h2>7</h2>
                     </div>
-                    <div class="column" style="background-color:#ddd;">
-                        <h2>Column 4</h2>
-                        <p>Some text..</p>
+
+                    <div class="column">
+                        <h2>8</h2>
+                    </div>
+
+                    <div class="column">
+                        <h2>7</h2>
+                    </div>
+
+                    <div class="column">
+                        <h2>9</h2>
+                    </div>
+
+                    <div class="column">
+                        <h2>6</h2>
                     </div>
                 </div>
             </td>

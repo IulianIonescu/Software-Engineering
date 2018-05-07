@@ -9,6 +9,11 @@ namespace IdentitySample.Controllers
             ViewBag.BackgroudImage = "~/Content/books.jpg";
             return View();
         }
+        public ActionResult IndexTeacher()
+        {
+            ViewBag.BackgroudImage = "~/Content/books.jpg";
+            return View();
+        }
 
         [Authorize]
         public ActionResult About()

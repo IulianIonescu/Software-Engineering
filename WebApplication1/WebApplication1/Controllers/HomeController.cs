@@ -6,6 +6,7 @@ namespace IdentitySample.Controllers
     {
         public ActionResult Index()
         {
+            ViewBag.BackgroudImage = "~/Content/books.jpg";
             return View();
         }
 

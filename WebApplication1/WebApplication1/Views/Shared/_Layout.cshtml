@@ -6,9 +6,10 @@
     <title>@ViewBag.Title - Lab Schedule App</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-
 </head>
-<body>
+<body style="background-image:url('/Content/Images/books.jpg');background-position: center;
+    background-repeat: no-repeat;
+    ">
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -22,14 +23,27 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    @if (Request.IsAuthenticated && User.IsInRole("Admin"))
+                    {
                     <li>@Html.ActionLink("About", "About", "Home")</li>
+                    }
+                    else
+                        if (Request.IsAuthenticated && User.IsInRole("Teacher"))
+                        {
+                         <li>@Html.ActionLink("About", "About_Teacher", "Home")</li>
+                         }
+                    else
+                    {
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+
+                    }
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
 
                     @if (Request.IsAuthenticated && User.IsInRole("Admin"))
-                        {
-                                    //<li>@Html.ActionLink("Roles", "Index", "RolesAdmin")</li>
-                                    <li>@Html.ActionLink("UsersAdmin", "Index", "UsersAdmin")</li>
-                    }
+    {
+        //<li>@Html.ActionLink("Roles", "Index", "RolesAdmin")</li>
+                <li>@Html.ActionLink("UsersAdmin", "Index", "UsersAdmin")</li>
+}
                     @if (Request.IsAuthenticated && User.IsInRole("Teacher"))
     {
                 <li>@Html.ActionLink("Manage Students", "Index", "ManageStudents")</li>

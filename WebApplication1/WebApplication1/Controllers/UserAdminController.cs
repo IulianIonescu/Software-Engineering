@@ -56,7 +56,10 @@ namespace IdentitySample.Controllers
         // GET: /Users/
         public async Task<ActionResult> Index()
         {
-            return View(await UserManager.Users.ToListAsync());
+            ApplicationRole teacherRole = RoleManager.Roles.SingleOrDefault(role => role.Name.Equals("Teacher"));
+            var userIds = teacherRole.Users.Select(usr => usr.UserId);
+            var teachers = UserManager.Users.Where(usr => userIds.Contains(usr.Id));
+            return View(await teachers.ToListAsync());
         }
 
         //
@@ -181,26 +184,27 @@ namespace IdentitySample.Controllers
                 return HttpNotFound();
             }
 
-            var userRoles = await UserManager.GetRolesAsync(user.Id);
 
             return View(new EditUserViewModel()
             {
                 Id = user.Id,
                 Email = user.Email,
-                RolesList = RoleManager.Roles.ToList().Select(x => new SelectListItem()
-                {
-                    Selected = userRoles.Contains(x.Name),
-                    Text = x.Name,
-                    Value = x.Name
-                })
+                EditLaboratories = new List<LaboratoriesViewModel>
+                            {
+                                new LaboratoriesViewModel{ ID=1, Name="Micro" },
+                                new LaboratoriesViewModel{ ID=2, Name="Software Engineering" },
+                                new LaboratoriesViewModel{ ID=3, Name="Web Application Design" }
+                            }
             });
+
+       
         }
 
         //
         // POST: /Users/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Email,Id,Username,City,State,PostalCode")] EditUserViewModel editUser, params string[] selectedRole)
+        public async Task<ActionResult> Edit([Bind(Include = "Email,Id,Username")] EditUserViewModel editUser, params string[] selectedRole)
         {
             if (ModelState.IsValid)
             {
@@ -212,25 +216,8 @@ namespace IdentitySample.Controllers
 
                 user.UserName = editUser.Email;
                 user.Email = editUser.Email;
+                UserManager.AddToRoles(editUser.Id, "Teacher");
 
-                var userRoles = await UserManager.GetRolesAsync(user.Id);
-
-                selectedRole = selectedRole ?? new string[] { };
-
-                var result = await UserManager.AddToRolesAsync(user.Id, selectedRole.Except(userRoles).ToArray<string>());
-
-                if (!result.Succeeded)
-                {
-                    ModelState.AddModelError("", result.Errors.First());
-                    return View();
-                }
-                result = await UserManager.RemoveFromRolesAsync(user.Id, userRoles.Except(selectedRole).ToArray<string>());
-
-                if (!result.Succeeded)
-                {
-                    ModelState.AddModelError("", result.Errors.First());
-                    return View();
-                }
                 return RedirectToAction("Index");
             }
             ModelState.AddModelError("", "Something failed.");

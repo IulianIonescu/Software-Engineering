@@ -24,17 +24,28 @@
     <p>No roles found for this user.</p>
 }
 
-<table class="table">
+    <table class="table">
 
-    @foreach (var item in ViewBag.RoleNames)
+
+        @foreach (var item in ViewBag.RoleNames)
     {
         <tr>
             <td>
                 @item
             </td>
         </tr>
-    }
-</table>
+}
+
+        <tr>
+
+            <th>
+
+                <h4>Group</h4>
+                <p> CEN31</p>
+
+            </th>
+        </tr>
+    </table>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Back to List", "Index")

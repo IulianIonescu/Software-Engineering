@@ -24,17 +24,14 @@
         </div>
     </div>
 
-
-
     <div class="form-group">
-        @Html.Label("Roles", new { @class = "control-label col-md-2" })
-        <span class=" col-md-10">
-            @foreach (var item in Model.RolesList)
-            {
-                <input type="checkbox" name="SelectedRole" value="@item.Value" checked="@item.Selected" class="checkbox-inline" />
-                @Html.Label(item.Value, new { @class = "control-label" })
-            }
-        </span>
+        @Html.LabelFor(model => model.EditLaboratories, new { @class = "control-label col-md-2" })
+        <div class=" col-md-10">
+            <p>
+                @Html.DropDownListFor(x => x.SelectedLaboratoryId,
+                                               new SelectList(Model.EditLaboratories, "ID", "Name"), "--Select Laboratory--")
+            </p>
+        </div>
     </div>
 
     <div class="form-group">

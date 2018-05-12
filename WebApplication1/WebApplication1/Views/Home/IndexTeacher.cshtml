@@ -32,74 +32,27 @@
 <table class="table">
     <tr>
         <th>
-            <!--   Html.DisplayNameFor(model => model.UserName) -->
-            <p style="font-size: 15px; text-align:center";>Username</p> 
+
+            @Html.DisplayNameFor(model => model.UserName)
+
         </th>
 
         <th>
-            <p style="font-size: 15px; "; >Grades</p>
+            <p>Options</p>
         </th>
     </tr>
 
-    @for(int i = 0; i < 5; i++)
+    @foreach (var item in Model)
     {
         <tr>
             <td>
-                <!-- Html.DisplayFor(modelItem => item.UserName) -->
-                <p style="font-size: 20px; text-align:center";> Ionel</p>
+                @Html.DisplayFor(modelItem => item.UserName)
             </td>
+
             <td>
-                <!-- Load Font Awesome Icon Library -->
-                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-                <!-- Buttons to choose list or grid view -->
-                <!--  <button onclick="listView()"><i class="fa fa-bars"></i> List</button> 
-                <button onclick="gridView()"><i class="fa fa-th-large"></i> Grid</button>-->
-
-                <div class="row">
-                    <div class="column">
-                        <h2>Lab1</h2>
-                        
-                    </div>
-                    <div class="column" >
-                        <h2>Lab2</h2>
-                        
-                    </div>
-                    <div class="column">
-                        <h2>Lab3</h2>
-                        
-                    </div>
-                    <div class="column">
-                        <h2>Lab4</h2>
-                        
-                    </div>
-                    <div class="column" >
-                        <h2>Lab5</h2>
-                        
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="column">
-                        <h2>7</h2>
-                    </div>
-
-                    <div class="column">
-                        <h2>8</h2>
-                    </div>
-
-                    <div class="column">
-                        <h2>7</h2>
-                    </div>
-
-                    <div class="column">
-                        <h2>9</h2>
-                    </div>
-
-                    <div class="column">
-                        <h2>6</h2>
-                    </div>
-                </div>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id }) |
             </td>
         </tr>
     }

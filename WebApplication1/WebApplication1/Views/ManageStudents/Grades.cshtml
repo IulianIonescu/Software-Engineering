@@ -1,15 +1,11 @@
 ﻿@model IEnumerable<IdentitySample.Models.ApplicationUser>
 
 @{
-    ViewBag.Title = "Manage Students";
+    ViewBag.Title = "Grades";
 }
 
-<h2>Manage Students</h2>
-<h3>Laboratory: Software Engineering</h3>
+<h2>Student Status</h2>
 
-<p>
-    @Html.ActionLink("Assign Student", "Create")
-</p>
 <table class="table">
     <tr>
         <th>
@@ -49,18 +45,9 @@
             </td>
 
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id }) |
-                @Html.ActionLink("Add Grade", "Grades", new { id = item.Id })
-            </td>
+                @Html.ActionLink("Add Grade", "AddGrade", new { id = item.Id })
 
-            @for(int i = 0; i < 6; i++)
-            {
-                <td>
-                    8
-                </td>
-            }
+            </td>
         </tr>
     }
 

@@ -1,0 +1,49 @@
+﻿@{
+    ViewBag.Title = "Laboratories";
+}
+
+<h2>Laboratories</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            <p>Laboratory Name</p>
+        </th>
+
+        <th>
+            <p>Date</p>
+        </th>
+        <th>
+            <p>Lab 1</p>
+        </th>
+        <th>
+            <p>Lab 2</p>
+        </th>
+        <th>
+            <p>Lab 3</p>
+        </th>
+        <th>
+            <p>Lab 4</p>
+        </th>
+        <th>
+            <p>Lab 5</p>
+        </th>
+        <th>
+            <p>Lab 6</p>
+        </th>
+    </tr>
+
+    @for (int i = 0; i < 6; i++)
+    {
+        <td>
+            8
+        </td>
+    }
+
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.Id })
+    </td>
+    }
+
+
+</table>

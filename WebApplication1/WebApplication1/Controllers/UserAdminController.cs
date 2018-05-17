@@ -60,6 +60,7 @@ namespace IdentitySample.Controllers
             var userIds = teacherRole.Users.Select(usr => usr.UserId);
             var teachers = UserManager.Users.Where(usr => userIds.Contains(usr.Id));
             return View(await teachers.ToListAsync());
+
         }
 
         //
@@ -190,11 +191,11 @@ namespace IdentitySample.Controllers
                 Id = user.Id,
                 Email = user.Email,
                 EditLaboratories = new List<LaboratoriesViewModel>
-                            {
-                                new LaboratoriesViewModel{ ID=1, Name="Micro" },
-                                new LaboratoriesViewModel{ ID=2, Name="Software Engineering" },
-                                new LaboratoriesViewModel{ ID=3, Name="Web Application Design" }
-                            }
+                {
+                    new LaboratoriesViewModel{ ID=1, Name="Micro" },
+                    new LaboratoriesViewModel{ ID=2, Name="Software Engineering" },
+                    new LaboratoriesViewModel{ ID=3, Name="Web Application Design" }
+                }
             });
 
        
@@ -204,7 +205,7 @@ namespace IdentitySample.Controllers
         // POST: /Users/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Email,Id,Username")] EditUserViewModel editUser, params string[] selectedRole)
+        public async Task<ActionResult> Edit([Bind(Include = "Email,Id")] EditUserViewModel editUser)
         {
             if (ModelState.IsValid)
             {
@@ -216,7 +217,8 @@ namespace IdentitySample.Controllers
 
                 user.UserName = editUser.Email;
                 user.Email = editUser.Email;
-                UserManager.AddToRoles(editUser.Id, "Teacher");
+                var result =  UserManager.AddToRoles(user.Id, "Teacher");
+
 
                 return RedirectToAction("Index");
             }

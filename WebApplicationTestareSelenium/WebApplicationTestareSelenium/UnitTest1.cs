@@ -473,6 +473,348 @@ namespace WebApplicationTestareSelenium
             }
         }
 
+        [TestMethod]
+        public void TeacherDetailsFunction()
+        {
+            ChromeDriver driver = new ChromeDriver();
+            try
+            {
+                string url = "http://localhost:54175/Account/Login";
+                driver = new ChromeDriver();
+                driver.Navigate().GoToUrl(url);
+                driver.Manage().Window.Maximize();
+
+                driver.FindElement(By.Id("Email")).SendKeys("admin@exemple.com");
+                driver.FindElement(By.Id("Password")).SendKeys("Admin@123456");
+                driver.FindElement(By.Id("btnLogin")).Click();
+
+                driver.FindElement(By.LinkText("UsersAdmin")).Click();
+                driver.FindElement(By.LinkText("Details")).Click();
+                driver.FindElement(By.LinkText("Back to List")).Click();
+
+                WebDriverWait wait = new WebDriverWait(driver, new TimeSpan(0, 0, 5));
+                wait.Until(wt => wt.FindElement(By.LinkText("Details")));
+                driver.Close();
+                driver.Dispose();
+            }
+            catch
+            {
+                ITakesScreenshot screenshotDriver = driver as ITakesScreenshot;
+                Screenshot screenshot = screenshotDriver.GetScreenshot();
+                screenshot.SaveAsFile("C:/Users/radud/OneDrive/Documents/GitHub/Software-Engineering/Software-Engineering/test.png", ScreenshotImageFormat.Png);
+                driver.Quit();
+            }
+        }
+
+        [TestMethod]
+        public void DeleteTeacherFunction()
+        {
+            ChromeDriver driver = new ChromeDriver();
+            try
+            {
+                string url = "http://localhost:54175/Account/Login";
+                driver = new ChromeDriver();
+                driver.Navigate().GoToUrl(url);
+                driver.Manage().Window.Maximize();
+
+                driver.FindElement(By.Id("Email")).SendKeys("admin@exemple.com");
+                driver.FindElement(By.Id("Password")).SendKeys("Admin@123456");
+                driver.FindElement(By.Id("btnLogin")).Click();
+
+                driver.FindElement(By.LinkText("UsersAdmin")).Click();
+                driver.FindElement(By.LinkText("Delete")).Click();
+                driver.FindElement(By.Id("deleteButtonT")).Click();
+
+                WebDriverWait wait = new WebDriverWait(driver, new TimeSpan(0, 0, 5));
+                wait.Until(wt => wt.FindElement(By.ClassName("text-success")));
+                driver.Close();
+                driver.Dispose();
+            }
+            catch
+            {
+                ITakesScreenshot screenshotDriver = driver as ITakesScreenshot;
+                Screenshot screenshot = screenshotDriver.GetScreenshot();
+                screenshot.SaveAsFile("C:/Users/radud/OneDrive/Documents/GitHub/Software-Engineering/Software-Engineering/test.png", ScreenshotImageFormat.Png);
+                driver.Quit();
+            }
+        }
+
+        [TestMethod]
+        public void CheckAboutPage()
+        {
+            ChromeDriver driver = new ChromeDriver();
+            try
+            {
+                string url = "http://localhost:54175/Account/Login";
+                driver = new ChromeDriver();
+                driver.Navigate().GoToUrl(url);
+                driver.Manage().Window.Maximize();
+
+                driver.FindElement(By.Id("Email")).SendKeys("admin@exemple.com");
+                driver.FindElement(By.Id("Password")).SendKeys("Admin@123456");
+                driver.FindElement(By.Id("btnLogin")).Click();
+
+                driver.FindElement(By.LinkText("About")).Click();
+
+                WebDriverWait wait = new WebDriverWait(driver, new TimeSpan(0, 0, 5));
+                wait.Until(wt => wt.FindElement(By.ClassName("aboutText")));
+                driver.Close();
+                driver.Dispose();
+            }
+            catch
+            {
+                ITakesScreenshot screenshotDriver = driver as ITakesScreenshot;
+                Screenshot screenshot = screenshotDriver.GetScreenshot();
+                screenshot.SaveAsFile("C:/Users/radud/OneDrive/Documents/GitHub/Software-Engineering/Software-Engineering/test.png", ScreenshotImageFormat.Png);
+                driver.Quit();
+            }
+        }
+
+        [TestMethod]
+        public void CheckContactPage()
+        {
+            ChromeDriver driver = new ChromeDriver();
+            try
+            {
+                string url = "http://localhost:54175/Account/Login";
+                driver = new ChromeDriver();
+                driver.Navigate().GoToUrl(url);
+                driver.Manage().Window.Maximize();
+
+                driver.FindElement(By.Id("Email")).SendKeys("admin@exemple.com");
+                driver.FindElement(By.Id("Password")).SendKeys("Admin@123456");
+                driver.FindElement(By.Id("btnLogin")).Click();
+
+                driver.FindElement(By.LinkText("Contact")).Click();
+
+                WebDriverWait wait = new WebDriverWait(driver, new TimeSpan(0, 0, 5));
+                wait.Until(wt => wt.FindElement(By.LinkText("Support@example.com")));
+                driver.Close();
+                driver.Dispose();
+            }
+            catch
+            {
+                ITakesScreenshot screenshotDriver = driver as ITakesScreenshot;
+                Screenshot screenshot = screenshotDriver.GetScreenshot();
+                screenshot.SaveAsFile("C:/Users/radud/OneDrive/Documents/GitHub/Software-Engineering/Software-Engineering/test.png", ScreenshotImageFormat.Png);
+                driver.Quit();
+            }
+        }
+
+        [TestMethod]
+        public void AssignStudentFunction()
+        {
+            ChromeDriver driver = new ChromeDriver();
+            try
+            {
+                string url = "http://localhost:54175/Account/Login";
+                driver = new ChromeDriver();
+                driver.Navigate().GoToUrl(url);
+                driver.Manage().Window.Maximize();
+
+                driver.FindElement(By.Id("Email")).SendKeys("profu@exemplu.com");
+                driver.FindElement(By.Id("Password")).SendKeys("Parola_1");
+                driver.FindElement(By.Id("btnLogin")).Click();
+
+                driver.FindElement(By.LinkText("Manage Students")).Click();
+
+                driver.FindElement(By.Id("emailAssign")).SendKeys("account@example.com");
+                driver.FindElement(By.Id("passwordAssign")).SendKeys("account@12345");
+                driver.FindElement(By.Id("confirmPasswordAssign")).SendKeys("account@12345");
+                driver.FindElement(By.Name("Groups"));
+                var selectElement = new SelectElement(Groups);
+                selectElement.SelectByValue("CR2");
+                driver.FindElement(By.Id("assignButton")).Click();
+
+                WebDriverWait wait = new WebDriverWait(driver, new TimeSpan(0, 0, 5));
+                wait.Until(wt => wt.FindElement(By.ClassName("text-success")));
+                driver.Close();
+                driver.Dispose();
+            }
+            catch
+            {
+                ITakesScreenshot screenshotDriver = driver as ITakesScreenshot;
+                Screenshot screenshot = screenshotDriver.GetScreenshot();
+                screenshot.SaveAsFile("C:/Users/radud/OneDrive/Documents/GitHub/Software-Engineering/Software-Engineering/test.png", ScreenshotImageFormat.Png);
+                driver.Quit();
+            }
+        }
+
+        [TestMethod]
+        public void EditStudentFunction()
+        {
+            ChromeDriver driver = new ChromeDriver();
+            try
+            {
+                string url = "http://localhost:54175/Account/Login";
+                driver = new ChromeDriver();
+                driver.Navigate().GoToUrl(url);
+                driver.Manage().Window.Maximize();
+
+                driver.FindElement(By.Id("Email")).SendKeys("profu@exemplu.com");
+                driver.FindElement(By.Id("Password")).SendKeys("Parola_1");
+                driver.FindElement(By.Id("btnLogin")).Click();
+
+                driver.FindElement(By.LinkText("Manage Students")).Click();
+                driver.FindElement(By.LinkText("Edit")).Click();
+
+                driver.FindElement(By.Id("emailEdit")).SendKeys("accountt@example.com");
+                driver.FindElement(By.ClassName("Groups"));
+                var selectElement = new SelectElement(Groups);
+                selectElement.SelectByValue("CR2");
+                driver.FindElement(By.ClassName("btn btn-default")).Click();
+
+                WebDriverWait wait = new WebDriverWait(driver, new TimeSpan(0, 0, 5));
+                wait.Until(wt => wt.FindElement(By.LinkText("Edit")));
+                driver.Close();
+                driver.Dispose();
+            }
+            catch
+            {
+                ITakesScreenshot screenshotDriver = driver as ITakesScreenshot;
+                Screenshot screenshot = screenshotDriver.GetScreenshot();
+                screenshot.SaveAsFile("C:/Users/radud/OneDrive/Documents/GitHub/Software-Engineering/Software-Engineering/test.png", ScreenshotImageFormat.Png);
+                driver.Quit();
+            }
+        }
+
+        [TestMethod]
+        public void StudentDetailsFunction()
+        {
+            ChromeDriver driver = new ChromeDriver();
+            try
+            {
+                string url = "http://localhost:54175/Account/Login";
+                driver = new ChromeDriver();
+                driver.Navigate().GoToUrl(url);
+                driver.Manage().Window.Maximize();
+
+                driver.FindElement(By.Id("Email")).SendKeys("profu@exemplu.com");
+                driver.FindElement(By.Id("Password")).SendKeys("Parola_1");
+                driver.FindElement(By.Id("btnLogin")).Click();
+
+                driver.FindElement(By.LinkText("Manage Students")).Click();
+                driver.FindElement(By.LinkText("Details")).Click();
+                driver.FindElement(By.LinkText("Back to List")).Click();
+
+                WebDriverWait wait = new WebDriverWait(driver, new TimeSpan(0, 0, 5));
+                wait.Until(wt => wt.FindElement(By.LinkText("Details")));
+                driver.Close();
+                driver.Dispose();
+            }
+            catch
+            {
+                ITakesScreenshot screenshotDriver = driver as ITakesScreenshot;
+                Screenshot screenshot = screenshotDriver.GetScreenshot();
+                screenshot.SaveAsFile("C:/Users/radud/OneDrive/Documents/GitHub/Software-Engineering/Software-Engineering/test.png", ScreenshotImageFormat.Png);
+                driver.Quit();
+            }
+        }
+
+        [TestMethod]
+        public void StudentEditFromDetailsFunction()
+        {
+            ChromeDriver driver = new ChromeDriver();
+            try
+            {
+                string url = "http://localhost:54175/Account/Login";
+                driver = new ChromeDriver();
+                driver.Navigate().GoToUrl(url);
+                driver.Manage().Window.Maximize();
+
+                driver.FindElement(By.Id("Email")).SendKeys("profu@exemplu.com");
+                driver.FindElement(By.Id("Password")).SendKeys("Parola_1");
+                driver.FindElement(By.Id("btnLogin")).Click();
+
+                driver.FindElement(By.LinkText("Manage Students")).Click();
+                driver.FindElement(By.LinkText("Details")).Click();
+                driver.FindElement(By.LinkText("Edit")).Click();
+
+                driver.FindElement(By.Id("emailEdit")).SendKeys("accountt@example.com");
+                driver.FindElement(By.ClassName("Groups"));
+                var selectElement = new SelectElement(Groups);
+                selectElement.SelectByValue("CR2");
+                driver.FindElement(By.ClassName("btn btn-default")).Click();
+
+                WebDriverWait wait = new WebDriverWait(driver, new TimeSpan(0, 0, 5));
+                wait.Until(wt => wt.FindElement(By.LinkText("Edit")));
+                driver.Close();
+                driver.Dispose();
+            }
+            catch
+            {
+                ITakesScreenshot screenshotDriver = driver as ITakesScreenshot;
+                Screenshot screenshot = screenshotDriver.GetScreenshot();
+                screenshot.SaveAsFile("C:/Users/radud/OneDrive/Documents/GitHub/Software-Engineering/Software-Engineering/test.png", ScreenshotImageFormat.Png);
+                driver.Quit();
+            }
+        }
+
+        [TestMethod]
+        public void DeleteStudentFunction()
+        {
+            ChromeDriver driver = new ChromeDriver();
+            try
+            {
+                string url = "http://localhost:54175/Account/Login";
+                driver = new ChromeDriver();
+                driver.Navigate().GoToUrl(url);
+                driver.Manage().Window.Maximize();
+
+                driver.FindElement(By.Id("Email")).SendKeys("profu@exemplu.com");
+                driver.FindElement(By.Id("Password")).SendKeys("Parola_1");
+                driver.FindElement(By.Id("btnLogin")).Click();
+
+                driver.FindElement(By.LinkText("Manage Students")).Click(); 
+                driver.FindElement(By.LinkText("Delete")).Click();
+                driver.FindElement(By.Id("deleteButtons")).Click();
+
+                WebDriverWait wait = new WebDriverWait(driver, new TimeSpan(0, 0, 5));
+                wait.Until(wt => wt.FindElement(By.ClassName("text-success")));
+                driver.Close();
+                driver.Dispose();
+            }
+            catch
+            {
+                ITakesScreenshot screenshotDriver = driver as ITakesScreenshot;
+                Screenshot screenshot = screenshotDriver.GetScreenshot();
+                screenshot.SaveAsFile("C:/Users/radud/OneDrive/Documents/GitHub/Software-Engineering/Software-Engineering/test.png", ScreenshotImageFormat.Png);
+                driver.Quit();
+            }
+        }
+
+        [TestMethod]
+        public void AddStudentGradeFunction()
+        {
+            ChromeDriver driver = new ChromeDriver();
+            try
+            {
+                string url = "http://localhost:54175/Account/Login";
+                driver = new ChromeDriver();
+                driver.Navigate().GoToUrl(url);
+                driver.Manage().Window.Maximize();
+
+                driver.FindElement(By.Id("Email")).SendKeys("profu@exemplu.com");
+                driver.FindElement(By.Id("Password")).SendKeys("Parola_1");
+                driver.FindElement(By.Id("btnLogin")).Click();
+
+                driver.FindElement(By.LinkText("Manage Students")).Click();
+                driver.FindElement(By.LinkText("Add Grade")).Click();
+
+                WebDriverWait wait = new WebDriverWait(driver, new TimeSpan(0, 0, 5));
+                wait.Until(wt => wt.FindElement(By.ClassName("text-success")));
+                driver.Close();
+                driver.Dispose();
+            }
+            catch
+            {
+                ITakesScreenshot screenshotDriver = driver as ITakesScreenshot;
+                Screenshot screenshot = screenshotDriver.GetScreenshot();
+                screenshot.SaveAsFile("C:/Users/radud/OneDrive/Documents/GitHub/Software-Engineering/Software-Engineering/test.png", ScreenshotImageFormat.Png);
+                driver.Quit();
+            }
+        }
+
     }
 
 }

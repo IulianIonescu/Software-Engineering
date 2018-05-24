@@ -507,6 +507,45 @@ namespace WebApplicationTestareSelenium
         }
 
         [TestMethod]
+        public void TeacherEditFromDetailsFunction()
+        {
+            ChromeDriver driver = new ChromeDriver();
+            try
+            {
+                string url = "http://localhost:54175/Account/Login";
+                driver = new ChromeDriver();
+                driver.Navigate().GoToUrl(url);
+                driver.Manage().Window.Maximize();
+
+                driver.FindElement(By.Id("Email")).SendKeys("admin@exemple.com");
+                driver.FindElement(By.Id("Password")).SendKeys("Admin@123456");
+                driver.FindElement(By.Id("btnLogin")).Click();
+
+                driver.FindElement(By.LinkText("UsersAdmin")).Click();
+                driver.FindElement(By.LinkText("Details")).Click();
+                driver.FindElement(By.LinkText("Edit")).Click();
+
+                driver.FindElement(By.Id("emailEdit")).SendKeys("accountt@example.com");
+                driver.FindElement(By.Name("LaboratoriesAssign"));
+                var selectElement = new SelectElement(LaboratoriesAssign);
+                selectElement.SelectByValue("SA");
+                driver.FindElement(By.ClassName("btn btn-default")).Click();
+
+                WebDriverWait wait = new WebDriverWait(driver, new TimeSpan(0, 0, 5));
+                wait.Until(wt => wt.FindElement(By.LinkText("Details")));
+                driver.Close();
+                driver.Dispose();
+            }
+            catch
+            {
+                ITakesScreenshot screenshotDriver = driver as ITakesScreenshot;
+                Screenshot screenshot = screenshotDriver.GetScreenshot();
+                screenshot.SaveAsFile("C:/Users/radud/OneDrive/Documents/GitHub/Software-Engineering/Software-Engineering/test.png", ScreenshotImageFormat.Png);
+                driver.Quit();
+            }
+        }
+
+        [TestMethod]
         public void DeleteTeacherFunction()
         {
             ChromeDriver driver = new ChromeDriver();
@@ -737,7 +776,7 @@ namespace WebApplicationTestareSelenium
                 driver.FindElement(By.ClassName("btn btn-default")).Click();
 
                 WebDriverWait wait = new WebDriverWait(driver, new TimeSpan(0, 0, 5));
-                wait.Until(wt => wt.FindElement(By.LinkText("Edit")));
+                wait.Until(wt => wt.FindElement(By.LinkText("Edit"))); 
                 driver.Close();
                 driver.Dispose();
             }
